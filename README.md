@@ -1,5 +1,7 @@
-# Examples
+# TOMCAT 9
 ## Tomcats 9.0.24 Dockerfiles
+Need to add the war/jar extending the images with this command in Dockerfile
+COPY some-app/target/some-app.war /usr/local/tomcat/webapps/
 ### Openjdk 11 Slim
 ./tomcat9/Dockerfile-openjdk11slim
 ### Oracle Openjdk 12
