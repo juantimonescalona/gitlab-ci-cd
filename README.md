@@ -1,3 +1,7 @@
+# Install Runner
+```shell
+/etc/bin/gitlab-ci-multi-runner register  
+```
 # TOMCAT 9
 ## Tomcats 9.0.24 Dockerfiles
 Need to add the war/jar extending the images with this command in Dockerfile
