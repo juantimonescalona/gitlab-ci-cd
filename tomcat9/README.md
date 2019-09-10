@@ -9,6 +9,7 @@ COPY some-app/target/some-app.war /usr/local/tomcat/webapps/
 ```console
 # Build example
 $ docker build --tag jtimon/tomcat9-openjdk11slim:lastest --file Dockerfile-openjdk11slim .
-
-
+...
+#Push to dockerhub
+$ docker push jtimon/tomcat9-openjdk11slim:lastest
 ```
