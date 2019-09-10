@@ -5,3 +5,10 @@ MAINTAINER jtimon@atsistemas.com
 # COPY path-to-your-application-war path-to-webapps-in-docker-tomcat
 COPY some-app/target/some-app.war /usr/local/tomcat/webapps/
 ```
+
+```console
+# Build example
+$ docker build --tag jtimon/tomcat9-openjdk11slim:lastest --file Dockerfile-openjdk11slim .
+
+
+```
