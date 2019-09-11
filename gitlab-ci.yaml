@@ -1,0 +1,44 @@
+stages:
+  - test
+  - deploy
+
+
+# So this is where I deploy to server to build the site 
+deploy-master:
+  stage: deploy
+  image: tetraweb/php:7.0
+
+  before_script:
+      - mkdir -p ~/.ssh
+      - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh deployer@YOUR_SERVERIP_HERE "cd /var/www/project/ && git checkout . && git checkout master && git pull && cp .env.example .env && composer install && php artisan migrate "
+  environment:
+    name: production
+  only:
+    refs:
+      - master
+  tags: 
+    - live
+    - production
+
+deploy-dev:
+  stage: deploy
+  image: tetraweb/php:7.0
+
+  before_script:
+      - mkdir -p ~/.ssh
+      - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh deployer@YOUR_SERVERIP_HERE "cd /var/www/project/ && git fetch && git checkout dev && git pull && cp .env.example_dev .env && composer install && php artisan migrate "
+  environment:
+    name: development
+  only:
+    refs:
+      - dev
+  tags: 
+    - live
