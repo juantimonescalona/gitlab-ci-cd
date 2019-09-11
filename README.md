@@ -15,3 +15,6 @@ COPY some-app/target/some-app.war /usr/local/tomcat/webapps/
 ./tomcat9/Dockerfile-openjdk8
 ### Openjdk 8 Slim
 ./tomcat9/Dockerfile-openjdk8slim
+
+# Example deploy with Maven Pipeline
+https://docs.gitlab.com/ee/ci/examples/artifactory_and_gitlab/index.html
