@@ -18,3 +18,6 @@ COPY some-app/target/some-app.war /usr/local/tomcat/webapps/
 
 # Example deploy with Maven Pipeline
 https://docs.gitlab.com/ee/ci/examples/artifactory_and_gitlab/index.html
+
+# How to deploy a war in remote tomcat
+http://localhost:8080/manager/text/deploy?war=file:/path/to/bar.war
