@@ -21,3 +21,5 @@ https://docs.gitlab.com/ee/ci/examples/artifactory_and_gitlab/index.html
 
 # How to deploy a war in remote tomcat
 http://localhost:8080/manager/text/deploy?war=file:/path/to/bar.war
+
+https://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html#Deploy_A_New_Application_Archive_(WAR)_Remotely
