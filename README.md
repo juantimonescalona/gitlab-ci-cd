@@ -27,3 +27,5 @@ https://tomcat.apache.org/tomcat-9.0-doc/manager-howto.html#Deploy_A_New_Applica
 https://docs.gitlab.com/ee/ci/examples/artifactory_and_gitlab/
 
 https://docs.gitlab.com/ee/ci/examples/
+
+https://medium.com/@speedforcerun/sonarqube-with-gitlab-ci-setup-stepbystep-java-maven-version-7e131dce0bb1
