@@ -36,3 +36,9 @@ Credentials: admin//password
 ```console
 docker run -d -p 8080:8080 --name artifactory -v /home/jtimon/proyectos/CLH/artifactory/data:/artifactory/data -v /home/jtimon/proyectos/CLH/artifactory/logs:/artifactory/logs -v /home/jtimon/proyectos/CLH/artifactory/backup:/artifactory/backup   mattgruter/artifactory
 ```
+# Sonarqube
+
+Credentials: admin//admin
+```console
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+```
