@@ -23,6 +23,7 @@ check_interval = 0
     privileged = false
     disable_cache = false
     volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
+    extra_hosts = ["gitlab-ci-token:10.28.102.51"]
   [runners.cache]
     Insecure = false
 
