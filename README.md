@@ -1,6 +1,31 @@
 # Install Runner
 ```shell
 /etc/bin/gitlab-ci-multi-runner register  
+
+
+bash-4.4# cat config.toml 
+concurrent = 1
+check_interval = 0
+
+[session_server]
+  listen_address = "0.0.0.0:9080"
+  advertise_address = "10.28.102.51:9080"
+  session_timeout = 1800
+
+[[runners]]
+  name = "runner"
+  url = "http://10.28.102.51:9080"
+  token = "Qcv6HsTnkraV5SQxsDxk"
+  executor = "docker"
+  [runners.docker]
+    tls_verify = false
+    image = "docker:stable"
+    privileged = false
+    disable_cache = false
+    volumes = ["/var/run/docker.sock:/var/run/docker.sock", "/cache"]
+  [runners.cache]
+    Insecure = false
+
 ```
 # TOMCAT 9
 ## Tomcats 9.0.24 Dockerfiles
