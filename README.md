@@ -31,6 +31,8 @@ https://docs.gitlab.com/ee/ci/examples/
 https://medium.com/@speedforcerun/sonarqube-with-gitlab-ci-setup-stepbystep-java-maven-version-7e131dce0bb1
 
 # Artifactory
+
+Credentials: admin//password
 ```console
 docker run -d -p 8080:8080 --name artifactory -v /home/jtimon/proyectos/CLH/artifactory/data:/artifactory/data -v /home/jtimon/proyectos/CLH/artifactory/logs:/artifactory/logs -v /home/jtimon/proyectos/CLH/artifactory/backup:/artifactory/backup   mattgruter/artifactory
 ```
