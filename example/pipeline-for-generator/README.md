@@ -9,4 +9,6 @@
   when: manual
 
 - Otra opción para que no salte la pipeline es agregar en el push: git push -o ci.skip (pero esto sería complicado de implementar)
-https://stackoverflow.com/questions/51431537/disable-pipeline-for-every-commit-in-gitlab-and-only-run-it-on-open-merge-reques
+https://docs.gitlab.com/ee/ci/yaml/#skipping-jobs
+git push --push-option=ci.skip    # using git 2.10+
+git push -o ci.skip               # using git 2.18+
