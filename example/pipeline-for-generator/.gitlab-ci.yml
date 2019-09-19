@@ -2,11 +2,10 @@ image: busybox:latest
 
 test1:
   stage: test
-    script:
-                        - echo "Aqui se lanza con echo"
-                              - echo "$CATEGORIA"
-                                    - echo "Lanzamiento de un shell script"
-                                          - chmod +x ./dummy.sh
-                                                - ./dummy.sh
+  script:
+    - echo "Aqui se lanza con echo"
+    - echo "$CATEGORIA"
+    - echo "Lanzamiento de un shell script"
+    - chmod +x ./dummy.sh
+    - ./dummy.sh
   when: manual 
-
