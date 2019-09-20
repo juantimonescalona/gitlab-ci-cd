@@ -13,6 +13,7 @@ git clone https://$USER_IC:$PASSWORD_IC@$ARCHETYPE_NAME.git
 mv $ARCHETYPE_NAME $PROJECT_NAME
 
 # Sharing a project with a group
+# https://docs.gitlab.com/ee/api/members.html
 # 10 => Guest access
 # 20 => Reporter access
 # 30 => Developer access
