@@ -3,13 +3,12 @@ echo "Name archetype from copy: $ARCHETYPE_NAME"
 echo "New project name: $PROJECT_NAME"
 echo "Group Owner: $GROUP_OWNER"
 echo "User IC: $USER_IC" #ic_user (en variable)
-echo "Server host: $SERVER_HOST"
+echo "Server host: $SERVER_HOST" # (en variable)
 # $PASSWORD_IC (en variable)
-# $SERVER_URL (en variable)
 
 # clone the template project to local
 # git clone ssh://john@example.com/path/to/my-project.git
-git clone https://$USER_IC:$PASSWORD_IC@$ARCHETYPE_NAME.git
+git clone $SERVER_HOST$USER_IC:$PASSWORD_IC@$ARCHETYPE_NAME.git
 
 # rename project name
 mv $ARCHETYPE_NAME $PROJECT_NAME
