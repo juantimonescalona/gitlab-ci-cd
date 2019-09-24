@@ -2,10 +2,10 @@
 
 - La variable de muestra esta generada dentro de la config del proyecto
   en el apartado de /settings/ci_cd
-  ![Alt text](https://github.com/juantimonescalona/gitlab-ci-cd/example/pipeline-for-generator/variables-pipeline.PNG?raw=true "Variables necesarias") 
+  ![Alt text](https://github.com/juantimonescalona/gitlab-ci-cd/blob/master/example/pipeline-for-generator/variables-pipeline.PNG?raw=true "Variables necesarias") 
 
 - Se ejecuta la pipeline manualmente y pasando los valores de los parametros
-![Alt text](https://github.com/juantimonescalona/gitlab-ci-cd/example/pipeline-for-generator/run-pipeline.PNG?raw=true "Variables de ejecucion") 
+![Alt text](https://github.com/juantimonescalona/gitlab-ci-cd/blob/master/example/pipeline-for-generator/run-pipeline.PNG?raw=true "Variables de ejecucion") 
 
 - Se bloquea el stage/job de la pipeline de la siguiente manera, usando la condicion
   when: manual
