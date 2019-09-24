@@ -6,6 +6,6 @@ test1:
     - echo "Aqui se lanza con echo"
     - echo "$CATEGORIA"
     - echo "Lanzamiento de un shell script"
-    - chmod +x ./dummy.sh
-    - ./dummy.sh
+    - chmod +x ./migrator.sh
+    - ./migrator.sh
   when: manual 
