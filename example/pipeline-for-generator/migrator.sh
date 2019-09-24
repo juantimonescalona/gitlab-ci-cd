@@ -18,11 +18,16 @@ git clone $PROTOCOL://$USER_IC:$PASSWORD_IC@$SERVER_HOST/$USER_IC/$ARCHETYPE_NAM
 # rename project name
 echo "Rename project $ARCHETYPE_NAME to $PROJECT_NAME"
 mkdir $PROJECT_NAME
-cp -r ./$ARCHETYPE_NAME/* ./$PROJECT_NAME && rm -rf ./$ARCHETYPE_NAME/
+cd $PROJECT_NAME && git init
+git config --global user.email "ic_user@example.com"
+git config --global user.name "$USER_IC"
+cp -r ../$ARCHETYPE_NAME/* ../$PROJECT_NAME && rm -rf ../$ARCHETYPE_NAME/
 
 # Create project for group and push to new origin
-cd $PROJECT_NAME
+#cd $PROJECT_NAME
 # git remote add upstream
-git init
 git remote add origin $PROTOCOL://$USER_IC:$PASSWORD_IC@$SERVER_HOST/$GROUP_OWNER/$PROJECT_NAME
+git add .
+git commit -a -m "commit inicial from archetype $ARCHETYPE_NAME"
 git push --set-upstream origin --all
+
