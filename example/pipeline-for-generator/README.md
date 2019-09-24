@@ -1,4 +1,4 @@
-# Ejemplo basico de pipeline para lanzar un sh
+# Gitlab Project && Pipeline for generate projects from git project template
 
 - La variable de muestra esta generada dentro de la config del proyecto
   en el apartado de /settings/ci_cd
