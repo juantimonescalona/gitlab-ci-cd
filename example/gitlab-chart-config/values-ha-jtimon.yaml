@@ -87,6 +87,103 @@ global:
     credentials: {}
       # secret:
 
+  ## doc/charts/globals.md#configure-appconfig-settings
+  ## Rails based portions of this chart share many settings
+  appConfig:
+    ## doc/charts/globals.md#general-application-settings
+    enableUsagePing: true
+    enableImpersonation: true
+    defaultCanCreateGroup: false
+    usernameChangingEnabled: false
+    issueClosingPattern:
+    defaultTheme:
+    defaultProjectsFeatures:
+      issues: true
+      mergeRequests: true
+      wiki: true
+      snippets: true
+      builds: true
+      containerRegistry: true
+    webhookTimeout:
+    gravatar:
+      plainUrl:
+      sslUrl:
+    extra:
+      googleAnalyticsId:
+      piwikUrl:
+      piwikSiteId:
+    lfs:
+      enabled: true
+      bucket: git-lfs
+      connection: {}
+        # secret:
+        # key:
+    artifacts:
+      enabled: true
+      bucket: gitlab-artifacts
+      connection: {}
+        # secret:
+        # key:
+    uploads:
+      enabled: true
+      bucket: gitlab-uploads
+      connection: {}
+        # secret:
+        # key:
+    packages:
+      enabled: true
+      bucket: gitlab-packages
+      connection: {}
+    externalDiffs:
+      enabled:
+      proxy_download: true
+      when:
+      bucket: gitlab-mr-diffs
+      connection: {}
+    backups:
+      bucket: gitlab-backups
+    incomingEmail:
+      enabled: false
+      address: "testing.jtimon@gmail.com"
+      host: "imap.gmail.com"
+      port: 993
+      ssl: true
+      startTls: false
+      user: "jtimon"
+#      password:
+#        secret: ""
+#        key: password
+      mailbox: inbox
+      idleTimeout: 60
+    pseudonymizer:
+      configMap:
+      bucket: gitlab-pseudo
+      connection: {}
+        # secret:
+        # key:
+    cron_jobs: {}
+
+  omniauth:
+    enabled: false
+
+    ## doc/charts/globals.md#ldap
+    ldap:
+      servers: {}
+      ## 'main' is the GitLab 'provider ID' of this LDAP server
+      # main:
+      #   label: 'LDAP'
+      #   host: '_your_ldap_server'
+      #   port: 636
+      #   uid: 'sAMAccountName'
+      #   bind_dn: '_the_full_dn_of_the_user_you_will_bind_with'
+      #   password:
+      #     secret: _the_secret_containing_your_ldap_password
+      #     key: _the_key_which_holds_your_ldap_password
+      #   encryption: 'plain'
+
+
+
+
   ## doc/charts/globals.md#application-resource
   application:
     create: false
@@ -104,138 +201,7 @@ global:
 
 
 
-  ## doc/charts/globals.md#configure-appconfig-settings
-  ## Rails based portions of this chart share many settings
-  appConfig:
-    ## doc/charts/globals.md#general-application-settings
-    enableUsagePing: true
-    enableImpersonation:
-    defaultCanCreateGroup: true
-    usernameChangingEnabled: true
-    issueClosingPattern:
-    defaultTheme:
-    defaultProjectsFeatures:
-      issues: true
-      mergeRequests: true
-      wiki: true
-      snippets: true
-      builds: true
-    webhookTimeout:
 
-    ## doc/charts/globals.md#cron-jobs-related-settings
-    cron_jobs: {}
-      # stuck_ci_jobs_worker:
-      #   cron: "0 * * * *"
-      # pipeline_schedule_worker:
-      #   cron: "19 * * * *"
-      # expire_build_artifacts_worker:
-      #   cron: "50 * * * *"
-      # repository_check_worker:
-      #   cron: "20 * * * *"
-      # admin_email_worker:
-      #   cron: "0 0 * * 0"
-      # repository_archive_cache_worker:
-      #   cron: "0 * * * *"
-      # pages_domain_verification_cron_worker:
-      #   cron: "*/15 * * * *"
-      # pseudonymizer_worker:
-      #   cron: "0 * * * *"
-      # schedule_migrate_external_diffs_worker:
-      #   cron: "15 * * * *"
-
-    ## doc/charts/globals.md#gravatarlibravatar-settings
-    gravatar:
-      plainUrl:
-      sslUrl:
-
-    ## doc/charts/globals.md#hooking-analytics-services-to-the-gitlab-instance
-    extra:
-      googleAnalyticsId:
-      piwikUrl:
-      piwikSiteId:
-
-    ## doc/charts/globals.md#lfs-artifacts-uploads-packages-external-mr-diffs
-    lfs:
-      bucket: git-lfs
-      connection: {}
-        # secret:
-        # key:
-    artifacts:
-      bucket: gitlab-artifacts
-      connection: {}
-        # secret:
-        # key:
-    uploads:
-      bucket: gitlab-uploads
-      connection: {}
-        # secret:
-        # key:
-    packages:
-      bucket: gitlab-packages
-      connection: {}
-    externalDiffs:
-      when:
-      bucket: gitlab-mr-diffs
-      connection: {}
-
-    ## doc/charts/globals.md#pseudonymizer-settings
-    pseudonymizer:
-      configMap:
-      bucket: gitlab-pseudo
-      connection: {}
-        # secret:
-        # key:
-    backups:
-      bucket: gitlab-backups
-      tmpBucket: tmp
-
-    ## doc/charts/globals.md#incoming-email-settings
-    ## doc/installation/deployment.md#incoming-email
-    incomingEmail:
-      enabled: false
-      address: ""
-      host: "imap.gmail.com"
-      port: 993
-      ssl: true
-      startTls: false
-      user: ""
-      password:
-        secret: ""
-        key: password
-      mailbox: inbox
-      idleTimeout: 60
-
-    ## doc/charts/globals.md#ldap
-    ldap:
-      servers: {}
-      ## 'main' is the GitLab 'provider ID' of this LDAP server
-      # main:
-      #   label: 'LDAP'
-      #   host: '_your_ldap_server'
-      #   port: 636
-      #   uid: 'sAMAccountName'
-      #   bind_dn: '_the_full_dn_of_the_user_you_will_bind_with'
-      #   password:
-      #     secret: _the_secret_containing_your_ldap_password
-      #     key: _the_key_which_holds_your_ldap_password
-      #   encryption: 'plain'
-
-    ## doc/charts/globals.md#omniauth
-    omniauth:
-      enabled: false
-      autoSignInWithProvider:
-      syncProfileFromProvider: []
-      syncProfileAttributes: ['email']
-      allowSingleSignOn: ['saml']
-      blockAutoCreatedUsers: true
-      autoLinkLdapUser: false
-      autoLinkSamlUser: false
-      externalProviders: []
-      allowBypassTwoFactor: []
-      providers: []
-      # - secret: gitlab-google-oauth2
-      #   key: provider
-  ## End of global.appConfig
 
   ## doc/charts/globals.md#configure-gitlab-shell-settings
   shell:
