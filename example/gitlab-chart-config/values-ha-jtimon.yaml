@@ -156,6 +156,7 @@ global:
       mailbox: inbox
       idleTimeout: 60
     pseudonymizer:
+      # Para incluir un configMap kubectl create configmap <name of the configmap> --from-file=pseudonymizer.yml=<path to pseudonymizer_config.yml>
       configMap:
       bucket: gitlab-pseudo
       connection: {}
@@ -181,15 +182,20 @@ global:
       #     key: _the_key_which_holds_your_ldap_password
       #   encryption: 'plain'
 
-
-
+  ## doc/charts/globals.md#configure-gitlab-shell-settings
+  shell:
+    port:
+    authToken: {}
+      # secret:
+      # key:
+    hostKeys: {}
+      # secret:
 
   ## doc/charts/globals.md#application-resource
   application:
     create: false
     links: []
     allowClusterRoles: true
-
 
   ## Initial root password for this GitLab installation
   ## Secret created according to doc/installation/secrets.md#initial-root-password
@@ -198,26 +204,11 @@ global:
     # secret: RELEASE-gitlab-initial-root-password
     # key: password
 
-
-
-
-
-
-  ## doc/charts/globals.md#configure-gitlab-shell-settings
-  shell:
-    authToken: {}
-      # secret:
-      # key:
-    hostKeys: {}
-      # secret:
-
   ## Rails application secrets
   ## Secret created according to doc/installation/secrets.md#gitlab-rails-secret
   ## If allowing shared-secrets generation, this is OPTIONAL.
   railsSecrets: {}
     # secret:
-
-
 
   ## GitLab Runner
   ## Secret created according to doc/installation/secrets.md#gitlab-runner-secret
@@ -433,7 +424,7 @@ shared-secrets:
 ## Installation & configuration of gitlab/gitlab-runner
 ## See requirements.yaml for current version
 gitlab-runner:
-  install: true
+  install: false
   rbac:
     create: true
   runners:
@@ -509,3 +500,33 @@ grafana:
 #     enabled: false
 ## doc/charts/gitlab/gitlab-grafana
 #   gitlab-grafana:
+gitlab:
+  #Ahora mismo tendria solo 1 replica habria que duplicar todas para HA
+  #Dentro de el subchart unicorn este esta el workhorse
+  unicorn:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 1
+  sidekiq:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 1
+  gitlab-shell:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 1
+  gitaly:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 1
+  gitlab-runner:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+  migrations:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+registry:
+  minReplicas: 1
+  maxReplicas: 1
