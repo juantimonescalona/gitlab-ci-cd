@@ -523,6 +523,7 @@ gitlab:
     enabled: false
     minReplicas: 1
     maxReplicas: 1
+  #En principio migrations no se levanta
   migrations:
     enabled: false
     minReplicas: 1
